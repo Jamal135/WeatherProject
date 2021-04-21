@@ -42,7 +42,7 @@ def read_weather(lat, lon, key, url):
 def weather_function():
     """
     Function: weather_function
-    Returns: 
+    Returns: Selected location specific weather information.
     """
     api_key_ip, api_key_weather = get_keys()
     latitude, longitude = read_coords(api_key_ip)
