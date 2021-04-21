@@ -1,49 +1,52 @@
-###########################################################################################
-#
-# Creation Date: 
-###########################################################################################
-# Weather Read Setup
-import ipinfo
-import requests
-import json
-import os
+""" Pull selected location specific weather information using open weather and ipinfo"""
+
+from os import getenv
+from json import loads
+from requests import get
+from ipinfo import getHandler
 from dotenv import load_dotenv
 
 url = "https://api.openweathermap.org/data/2.5/onecall?lat=%s&lon=%s&appid=%s&units=metric"
 
-###########################################################################################
-# Function: getKeys
-# Note: .env File Containing both Variable Keys Must be Created First.
-# Returns: Weather and IP API Keys Read from File.
-def getKeys():
+def get_keys():
+    """
+    Function: get_keys
+    Note: .env file containing both variable keys must be created first.
+    Returns: Weather and IP API keys read from .env file.
+    """
     load_dotenv()
-    apiKeyIP = os.getenv('APIKEYIP')
-    apiKeyWE = os.getenv('APIKEYWE')
-    if apiKeyIP is None or apiKeyWE is None:
+    api_key_ip = getenv('APIKEYIP')
+    api_key_weather = getenv('APIKEYWE')
+    if api_key_ip is None or api_key_weather is None:
         raise ValueError("Expected Keys Not in .env File")
-    else: return apiKeyIP, apiKeyWE
+    else: return api_key_ip, api_key_weather
 
-# Function: readCoords
-# Returns: Location in Latitude and Longitude Coordinates.
-def readCoords(key):
-    handler = ipinfo.getHandler(key)
+def read_coords(key):
+    """
+    Function: read_coords
+    Returns: Location coordinates in latitude and longitude.
+    """
+    handler = getHandler(key)
     details = handler.getDetails()
     return details.latitude, details.longitude
 
-# Function: readWeather
-# Returns: Selected Location Specific Weather Data.    
-def readWeather(lat, lon, key, url):
+def read_weather(lat, lon, key, url):
+    """
+    Function: read_weather
+    Returns: Selected location specific weather data.
+    """
     link = url % (lat, lon, key)
-    response = requests.get(link)
-    return json.loads(response.text)
-
-# Function: weatherFunction
-# Returns: 
-def weatherFunction():
-    apiKeyIP, apiKeyWE = getKeys()
-    latitude, longitude = readCoords(apiKeyIP)
-    weather = readWeather(latitude, longitude, apiKeyWE, url)
+    response = get(link)
+    return loads(response.text)
+ 
+def weather_function():
+    """
+    Function: weather_function
+    Returns: 
+    """
+    api_key_ip, api_key_weather = get_keys()
+    latitude, longitude = read_coords(api_key_ip)
+    weather = read_weather(latitude, longitude, api_key_weather, url)
     print(weather)
 
-###########################################################################################
-weatherFunction()
+weather_function()
