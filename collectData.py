@@ -33,12 +33,18 @@ def read_weather(lat, lon, key):
     response = get(link)
     return loads(response.text)
 
+# Function: pull_data
+# Note: Selected data to be pulled is defined in the .env file.
+def pull_data(weather):
+    """ Returns: Selected information from complete weather data. """
+    pass
+
 # Function: weather_function
 def weather_function():
     """ Returns: Selected location specific weather information & data. """
     api_key_ip, api_key_weather = get_keys()
     latitude, longitude = read_coords(api_key_ip)
-    weather = read_weather(latitude, longitude, api_key_weather)
-    print(weather)
+    weather_data = read_weather(latitude, longitude, api_key_weather)
+    return pull_data(weather_data)
 
 weather_function()
