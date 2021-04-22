@@ -4,6 +4,7 @@ from json import load
 
 # Function: load_config
 def load_config():
+    """ Returns: JSON configuration file as a loaded dictionary. """
     with open("configuration.json") as data:
         return load(data)
 
