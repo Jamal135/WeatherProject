@@ -1,0 +1,11 @@
+
+{ 
+    "labels" : "concise",        
+    "colour" : "#878787",
+    "position" : "1",
+    "days" : "3",
+
+    "data1" : "rainforecast",
+    "data2" : "temperature",
+    "data3" : "humidity"
+}
