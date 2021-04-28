@@ -53,7 +53,7 @@ def pull_data(current, forecast, configuration):
 # Function: weather_function
 def weather_function(configuration):
     """ Returns: Selected location specific weather information & data. """
-    number_days = int(configuration["days"])
+    number_days = configuration["data"]["days"]
     key_ip, key_weather = get_keys()
     latitude, longitude = read_coords(key_ip)
     current, forecast = read_weather(latitude, longitude, key_weather, number_days)

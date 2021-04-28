@@ -1,11 +1,20 @@
-
 { 
-    "labels" : "concise",        
-    "colour" : "#878787",
-    "position" : "1",
-    "days" : "3",
 
-    "data1" : "rainforecast",
-    "data2" : "temperature",
-    "data3" : "humidity"
+    "display": {
+        "labels" : "concise",        
+        "colour" : "#878787",
+        "position" : {
+            "x" : 0,
+            "y" : 0
+        }
+    },
+    
+    "data" : {
+        "days" : 3,
+        "elements" : [
+            "Rainforecast",
+            "temperature",
+            "humidity"
+        ]
+    }
 }
