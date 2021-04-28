@@ -10,4 +10,3 @@ def load_config():
 
 configuration = load_config()
 data = weather_function(configuration)
-print(data)
