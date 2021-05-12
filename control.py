@@ -1,3 +1,4 @@
+
 # Control operations of weather data program.
 from collect_data import weather_function
 from json import load
@@ -10,3 +11,10 @@ def load_config():
 
 configuration = load_config()
 data = weather_function(configuration)
+
+# Process:
+# 1: Pull Data
+# 2: Build SVG --> PNG
+# 3: Layer Data PNG over BG PNG
+# 4: Update PC BG PNG
+# 5: Repeat after x

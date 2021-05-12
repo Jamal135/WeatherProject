@@ -16,5 +16,9 @@
             "temperature",
             "humidity"
         ]
+    },
+
+    "options" : {
+        "x" : "x"
     }
 }

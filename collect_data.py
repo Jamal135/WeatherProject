@@ -1,3 +1,4 @@
+
 # Pull selected location specific weather information using open weather and ipinfo.
 from os import getenv
 from json import loads
